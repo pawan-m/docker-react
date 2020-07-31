@@ -1,0 +1,10 @@
+sudo: required 
+language: generic
+services: 
+        - docker 
+
+before_install: 
+        - docker build -t p20min/docker-react -f Dockerfile.dev . 
+
+script:
+  - docker run -e CI=true p20min/docker-react npm run test
